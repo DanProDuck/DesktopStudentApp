@@ -1,0 +1,15 @@
+﻿<Window x:Class="DesktopStudentApp.DeleteWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DesktopStudentApp"
+        mc:Ignorable="d"
+        Title="DeleteWindow" Height="134" Width="400">
+    <Grid>
+        <TextBox HorizontalAlignment="Left" Height="18" Margin="41,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="166" x:Name="DeleteID"/>
+        <Button Content="Submit" HorizontalAlignment="Left" Height="18" Margin="224,50,0,0" VerticalAlignment="Top" Width="82" Click="Submit_btn"/>
+        <TextBlock HorizontalAlignment="Left" Height="29" Margin="33,10,0,0" TextWrapping="Wrap" Text="Enter ID of a student which you want to delete." VerticalAlignment="Top" Width="304"/>
+
+    </Grid>
+</Window>

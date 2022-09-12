@@ -25,7 +25,7 @@ namespace DesktopStudentApp
         {
             InitializeComponent();
         }
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connectString"].ConnectionString);
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
 
         private void SaveGrade_btn(object sender, RoutedEventArgs e)
         {

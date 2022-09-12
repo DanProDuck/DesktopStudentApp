@@ -33,7 +33,7 @@ namespace DesktopStudentApp
             LoadTable();
         }
 
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connectString"].ConnectionString);
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
 
         public void LoadTable()
         {
@@ -47,7 +47,7 @@ namespace DesktopStudentApp
                 con.Close();
                 Dgrd.ItemsSource = dt.DefaultView;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Database Error: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
@@ -118,15 +118,13 @@ namespace DesktopStudentApp
 
         private void TextBox_TextChangedName(object sender, TextChangedEventArgs e)
         {
-            
             SqlCommand cmd = new SqlCommand("select * from Student where Name like '" + txt_SearchName.Text + "%'", con);
             DataTable dt = new DataTable();
             con.Open();
             SqlDataReader sdr = cmd.ExecuteReader();
             dt.Load(sdr);
             con.Close();
-            Dgrd.ItemsSource = dt.DefaultView;
-            
+            Dgrd.ItemsSource = dt.DefaultView;   
         }
 
         private void TextBox_TextChangedSurname(object sender, TextChangedEventArgs e)
@@ -143,8 +141,15 @@ namespace DesktopStudentApp
 
         private void Delete_btn(object sender, RoutedEventArgs e)
         {
-            DeleteWindow delwin = new DeleteWindow();
-            delwin.Show();
+            try
+            {
+                DeleteWindow delwin = new DeleteWindow();
+                delwin.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
 
         private void Edit_btn(object sender, RoutedEventArgs e)
@@ -163,11 +168,12 @@ namespace DesktopStudentApp
         {
             con.Open();
             SqlCommand cmd = new SqlCommand("select * from Student where [Index] like '" + txt_SearchIndex.Text + "%'", con);
+            SqlDataReader ser = cmd.ExecuteReader();
             DataTable dt = new DataTable();
-            SqlDataReader sdr = cmd.ExecuteReader();
-            dt.Load(sdr);
-            Dgrd.ItemsSource = dt.DefaultView;
+
+            dt.Load(ser);
             con.Close();
+            Dgrd.ItemsSource = dt.DefaultView;
         }
 
         private void TextBox_TextChangedDataOfBirth(object sender, TextChangedEventArgs e)

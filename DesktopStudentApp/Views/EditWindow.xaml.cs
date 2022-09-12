@@ -58,7 +58,7 @@ namespace DesktopStudentApp
             return true;
         }
 
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connectString"].ConnectionString);
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
         int answer;
         int guess;
         public int Answer
@@ -110,7 +110,5 @@ namespace DesktopStudentApp
         {
             this.Close();
         }
-
-
     }
 }
